@@ -18,10 +18,10 @@ export default function Home() {
     // Home Page Layout
     <div className="relative h-screen">
       <div className="space-y-8 flex flex-col items-center">
-        <h1 className="text-white font-semibold text-xl sm:text-6xl font-sans sm:mt-52">
+        <h1 className="text-white font-semibold text-4xl sm:text-6xl font-sans mt-40 sm:mt-52">
           Modo
         </h1>
-        <p className="text-gray-300 font-mono mt-1 ml-[1px]">
+        <p className="text-gray-300 font-mono mt-1 ml-[1px] sm:text-xl">
           Not the means, but the mode to technology.
         </p>
         <button

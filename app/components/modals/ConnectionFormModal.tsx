@@ -2,6 +2,7 @@ import TextInput from "@/app/utils/TextInput/TextInput";
 import axios from "axios";
 import { Dispatch, SetStateAction } from "react";
 import { IoClose } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 interface IProps {
   setLoading: Dispatch<SetStateAction<boolean>>;
@@ -28,6 +29,16 @@ export default function ConnectionFormModal({
       });
       setSuccess(true);
       setLoading(false);
+      toast.success(`Logged In Successfully!...`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -36,15 +47,15 @@ export default function ConnectionFormModal({
 
   return (
     <div className="h-full w-full absolute top-0 flex justify-center bg-black overflow-hidden">
-      <div className="flex absolute top-14 right-36">
+      <div className="flex absolute top-8 sm:top-14 right-8 sm:right-36">
         <IoClose
-          className="text-4xl text-red-500 cursor-pointer"
+          className="text-3xl sm:text-4xl text-red-500 cursor-pointer"
           onClick={() => setIsConnectionFormOpen(false)}
         />
       </div>
-      <div className="sm:mt-44">
+      <div className="mt-36 sm:mt-44">
         <form className="" action={onSubmitHandler}>
-          <p className="text-xl font-normal text-gray-200 mb-7">
+          <p className="text-lg sm:text-xl font-normal text-gray-200 mb-7">
             Login to the Miniserver
           </p>
           <TextInput placeholder="ip address" />

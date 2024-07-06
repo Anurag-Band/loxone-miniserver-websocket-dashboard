@@ -13,7 +13,9 @@ export default function LightingController() {
         onClick={() => setIsLightMoodsModalOpen(true)}
       >
         <Image src={RGBIcon} alt="RGB Icon" width={60} height={60} />
-        <h3 className="text-white font-semibold text-xl">RGB Spot RGBW Tree</h3>
+        <h3 className="text-white font-semibold text-base sm:text-xl">
+          RGB Spot RGBW Tree
+        </h3>
         <p className="text-sm font-mono">Living Room</p>
       </div>
       {isLightMoodsModalOpen && (
@@ -24,4 +26,5 @@ export default function LightingController() {
     </div>
   );
 }
+
 

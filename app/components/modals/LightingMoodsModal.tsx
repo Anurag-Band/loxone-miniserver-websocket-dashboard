@@ -1,9 +1,9 @@
-import TextInput from "@/app/utils/TextInput/TextInput";
 import axios from "axios";
 import Image from "next/image";
 import { Dispatch, SetStateAction, useState } from "react";
 import { IoClose } from "react-icons/io5";
 import RGBIcon from "@/app/assets/rgb-icon.png";
+import { toast } from "react-toastify";
 
 interface IProps {
   setIsLightMoodsModalOpen: Dispatch<SetStateAction<boolean>>;
@@ -32,6 +32,16 @@ export default function LightingMoodsModal({
       });
       setSuccess(true);
       setLoading(false);
+      toast.success(`Mood Changed to ${selectedMood}`, {
+        position: "top-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
     } catch (error) {
       setLoading(false);
       console.log(error);
@@ -40,13 +50,13 @@ export default function LightingMoodsModal({
 
   return (
     <div className="h-full w-full absolute top-0 left-0 flex justify-center bg-black overflow-hidden">
-      <div className="flex absolute top-14 right-36">
+      <div className="flex absolute top-8 sm:top-14 right-8 sm:right-36">
         <IoClose
-          className="text-4xl text-red-500 cursor-pointer"
+          className="text-3xl sm:text-4xl text-red-500 cursor-pointer"
           onClick={() => setIsLightMoodsModalOpen(false)}
         />
       </div>
-      <div className="sm:mt-32 space-y-5 flex flex-col items-center">
+      <div className="mt-20 sm:mt-32 space-y-5 flex flex-col items-center">
         <div className="flex items-center justify-center rounded-full p-5 bg-gray-900">
           <Image src={RGBIcon} alt="RGB Icon" width={60} height={60} />
         </div>
@@ -66,7 +76,7 @@ export default function LightingMoodsModal({
                   onMoodChange(mood.value);
                 }}
               >
-                {mood.label}
+                {mood.value}
               </div>
             );
           })}
